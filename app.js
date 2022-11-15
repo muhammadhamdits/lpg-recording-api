@@ -1,6 +1,7 @@
 const cors = require('cors')
 const express = require('express')
 const routes = require('./routes')
+const { appCallback } = require('./appHelper')
 
 require('dotenv').config()
 
@@ -10,8 +11,4 @@ app.use(cors())
 app.use(express.json())
 app.use(routes)
 
-app.listen(process.env.SERVER_PORT, () => {
-  serverHostAndPort = `${process.env.SERVER_HOST}:${process.env.SERVER_PORT}`
-  message = `Server is running on ${serverHostAndPort}`
-  console.log(message)
-})
+app.listen(process.env.SERVER_PORT, appCallback)
