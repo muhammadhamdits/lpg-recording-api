@@ -6,11 +6,3 @@ router.get('/', (req, res) => {
 })
 
 module.exports = router
-
-
-// id
-// date -> created_at
-// restock_id
-// customer_name
-// quantity
-// type
