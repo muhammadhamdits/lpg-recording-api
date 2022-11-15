@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const router = new Router()
 
-router.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const restocks = require('./controllers/restocks')
+
+router.get('/restocks', restocks.index)
 
 module.exports = router
