@@ -19,7 +19,7 @@ const normalFormat = (data) => {
     quantity: data.quantity,
     date: data.created_at,
     type: data.type,
-    restock: restockOutput.smallFormat(data.restock)
+    restock: restockOutput.smallFormat(data.Restock)
   }
 }
   
