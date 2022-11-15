@@ -6,10 +6,8 @@ const { deleteProp } = require('./index')
 const index = async (params) => {
   try {
     const { filteredParams, customerName } = deleteProp(params, 'customerName')
-    const whereParams = {
-      ...filteredParams,
-      customerName: { [Op.like]: `%${customerName}%` }
-    }
+    let whereParams = { ...filteredParams }
+    if(customerName) whereParams['customerName'] = { [Op.like]: `%${customerName}%` }
 
     const transactions = await Transaction.findAll({
       where: whereParams,
