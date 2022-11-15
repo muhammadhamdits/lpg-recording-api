@@ -14,7 +14,3 @@ module.exports = router
 // customer_name
 // quantity
 // type
-
-// id
-// date
-// quantity
