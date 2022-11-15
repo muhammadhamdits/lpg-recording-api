@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Restock.hasMany(models.Transaction, { foreignKey: 'restockId' })
     }
   }
+  
   Restock.init({
     date: DataTypes.DATE,
     quantity: DataTypes.INTEGER

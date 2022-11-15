@@ -1,16 +1,12 @@
 const { validationResult, matchedData } = require('express-validator')
 
 module.exports = (validations) => {
-  return async (req, res, next) => {
+  return async (req) => {
     await Promise.all(validations.map(validation => validation.run(req)))
 
     const errors = validationResult(req)
-    if (errors.isEmpty()) {
-      req.inputData = matchedData(req)
-      
-      return next()
-    }
+    if(errors.array().length > 0) return { errors: errors.array() }
     
-    return res.status(422).json({ errors: errors.array() })
+    return matchedData(req)
   }
 }
