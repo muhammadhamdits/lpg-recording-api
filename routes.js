@@ -7,5 +7,6 @@ const transactions = require('./app/controllers/transactions')
 router.get('/restocks', restocks.index)
 
 router.get('/transactions', transactions.index)
+router.post('/transactions', transactions.create)
 
 module.exports = router

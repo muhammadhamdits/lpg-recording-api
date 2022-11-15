@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const Transaction = require('../../models').Transaction
+const Restock = require('../../models').Restock
 const { deleteProp } = require('./index')
 
 const index = async (params) => {
@@ -20,4 +21,18 @@ const index = async (params) => {
   }
 }
 
-module.exports = { index }
+const create = async (params) => {
+  try {
+    const restock = await Restock.findByPk(params.restockId)
+    if(!restock) return { status: 404, data: { message: 'Restock not found' } }
+
+    const transaction = await Transaction.create(params)
+    const outputData = { ...transaction.dataValues, Restock: restock }
+
+    return { data: outputData }
+  } catch (error) {
+    return { status: 500, data: error }
+  }
+}
+
+module.exports = { index, create }
