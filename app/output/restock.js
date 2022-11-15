@@ -1,6 +1,6 @@
 const { arrayOutput, dateFormat } = require('./index')
 
-const normal = (res, { status = 200, data }) => {
+const normalArray = (res, { status = 200, data }) => {
   output = arrayOutput(data, normalFormat)
   res.status(status).json(output)
 }
@@ -20,4 +20,4 @@ const smallFormat = (data) => {
   }
 }
   
-module.exports = { normal, smallFormat }
+module.exports = { normalArray, smallFormat }

@@ -11,7 +11,7 @@ const index = async (req, res) => {
 
   result = await service.index(params)
 
-  output.normal(res, result)
+  output.normalArray(res, result)
 }
 
 const create = async (req, res) => {
@@ -20,7 +20,7 @@ const create = async (req, res) => {
 
   result = await service.create(params)
 
-  output.normalFormat(res, result)
+  output.normalSingle(res, result)
 }
 
 module.exports = { index, create }

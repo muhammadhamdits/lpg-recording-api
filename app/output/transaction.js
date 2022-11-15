@@ -5,11 +5,17 @@ const plain = (res, { status = 200, data }) => {
   res.status(status).json(data)
 }
 
-const normal = (res, { status = 200, data }) => {
+const normalArray = (res, { status = 200, data }) => {
   if(status !== 200) return plain(res, { status, data })
 
   output = arrayOutput(data, normalFormat)
   res.status(status).json(output)
+}
+
+const normalSingle = (res, { status = 200, data }) => {
+  if(status !== 200) return plain(res, { status, data })
+  
+  res.status(status).json(normalFormat(data))
 }
 
 const normalFormat = (data) => {
@@ -23,4 +29,4 @@ const normalFormat = (data) => {
   }
 }
   
-module.exports = { normal, plain }
+module.exports = { normalArray, plain, normalSingle }

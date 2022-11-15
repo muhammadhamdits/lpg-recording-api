@@ -26,8 +26,8 @@ const create = async (params) => {
     const restock = await Restock.findByPk(params.restockId)
     if(!restock) return { status: 404, data: { message: 'Restock not found' } }
 
-    const transaction = Transaction.create(params)
-    const outputData = { ...transaction, Restock: restock }
+    const transaction = await Transaction.create(params)
+    const outputData = { ...transaction.dataValues, Restock: restock }
 
     return { data: outputData }
   } catch (error) {
