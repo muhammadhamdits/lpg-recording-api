@@ -3,14 +3,24 @@ const input = require('../input')
 const output = require('../output/transaction')
 
 const indexInput = require('../input/transactions')
+const createInput = require('../input/transactions/create')
 
 const index = async (req, res) => {
   params = await input(indexInput)(req)
-  if(params.errors) return res.status(422).json(params)
+  if(params.errors) return output.plain(res, { status: 422, data: params})
 
   result = await service.index(params)
 
   output.normal(res, result)
 }
 
-module.exports = { index }
+const create = async (req, res) => {
+  params = await input(createInput)(req)
+  if(params.errors) return output.plain(res, { status: 422, data: params})
+
+  result = await service.create(params)
+
+  output.normalFormat(res, result)
+}
+
+module.exports = { index, create }

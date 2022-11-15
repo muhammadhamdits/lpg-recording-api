@@ -6,7 +6,7 @@ const plain = (res, { status = 200, data }) => {
 }
 
 const normal = (res, { status = 200, data }) => {
-  if(status === 500) return plain(res, { status, data })
+  if(status !== 200) return plain(res, { status, data })
 
   output = arrayOutput(data, normalFormat)
   res.status(status).json(output)
@@ -23,4 +23,4 @@ const normalFormat = (data) => {
   }
 }
   
-module.exports = { normal }
+module.exports = { normal, plain }
