@@ -8,7 +8,7 @@ const index = async (params) => {
 
     return { data: restocks }
   } catch (error) {
-    return { status: 400, data: error }
+    return { status: 500, data: error }
   }
 }
 

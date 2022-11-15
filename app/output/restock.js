@@ -12,5 +12,12 @@ const normalFormat = (data) => {
     quantity: data.quantity
   }
 }
+
+const smallFormat = (data) => {
+  return {
+    id: data.id,
+    date: dateFormat(data.date)
+  }
+}
   
-module.exports = { normal }
+module.exports = { normal, smallFormat }
