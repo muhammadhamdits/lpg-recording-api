@@ -2,7 +2,9 @@ const Restock = require('../../models').Restock
 
 const index = async (params) => {
   try {
-    let restocks = await Restock.findAll()
+    let restocks = await Restock.findAll({
+      include: ['Transactions']
+    })
     if(params.year) restocks = filterByYear(restocks, params.year)
     if(params.month) restocks = filterByMonth(restocks, params.month)
 

@@ -10,7 +10,7 @@ const index = async (req, res) => {
 
   result = await service.index(params)
 
-  output.normalArray(res, result)
+  output.fullArray(res, result)
 }
 
 module.exports = { index }
